@@ -1,0 +1,196 @@
+<!doctype html>
+<html ⚡4email>
+<head>
+<meta charset="utf-8">
+
+<script async src="https://cdn.ampproject.org/v0.js"></script>
+
+<!-- AMP Components -->
+
+
+<script async custom-element="amp-form"
+src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+<style amp4email-boilerplate>
+body{visibility:hidden}
+</style>
+
+<style amp-custom>
+
+body{
+font-family: Arial, Helvetica, sans-serif;
+background:#f4f6f8;
+margin:0;
+padding:0;
+}
+
+.container{
+max-width:600px;
+margin:auto;
+background:#ffffff;
+object-fit: cover;
+}
+
+.header{
+background:#104c57;
+color:white;
+text-align:center;
+}
+
+.title{
+font-size:24px;
+font-weight:bold;
+}
+
+.banner{
+width:100%;
+}
+
+.content{
+padding:20px;
+}
+
+.info-box{
+background:#f1f5f9;
+padding:15px;
+border-radius:8px;
+margin-bottom:15px;
+}
+
+.button{
+display:inline-block;
+background:#ff6b00;
+color:white;
+padding:12px 20px;
+border-radius:6px;
+text-decoration:none;
+font-weight:bold;
+margin-top:10px;
+}
+
+.footer{
+background:#f1f1f1;
+padding:15px;
+text-align:center;
+font-size:12px;
+color:#666;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HEADER -->
+<amp-img
+src="https://raw.githubusercontent.com/maulanairvan0812-wq/test-2/refs/heads/main/asset%20logo%202.png"
+width="450"
+height="60"
+layout="responsive">
+
+</amp-img>
+
+<!-- IMAGE SLIDER -->
+
+
+<amp-img
+src="https://raw.githubusercontent.com/maulanairvan0812-wq/test-2/refs/heads/main/Frame%201261160560%201.png"
+width="400"
+height="250"
+layout="responsive">
+</amp-img>
+
+<div style="background-color: #2C6165;" class="content">
+
+
+
+<!-- RSVP FORM -->
+
+<form style="background-color: whitesmoke; padding:10px ; border-radius: 10px;" method="post"
+action-xhr="https://example.com/rsvp"
+target="_top">
+<div style="max-width:600px; margin:auto; background:#f5f5f5; padding:20px; border-radius:15px;">
+
+  <!-- Domisili -->
+  <p style="font-weight:bold; color:#2f5d62;">Domisili Anda saat ini:</p>
+  <input type="text" id="domisili" placeholder="Kota Anda"
+    style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd; margin-bottom:20px;">
+
+  <hr>
+
+  <!-- Section 1 -->
+  <p style="font-weight:bold; color:#2f5d62;">
+    Kapan Anda siap untuk mengikuti program ini
+  </p>
+
+  <label style="color:#2C6165;">
+    <input type="radio" name="waktu"> <b>Dalam 3 bulan ke depan</b>
+  </label><br><br>
+
+  <label style="color:#2C6165;">
+    <input type="radio" name="waktu"> <b>Lebih dari 3 bulan</b>
+  </label>
+
+  <hr style="margin:20px 0;">
+
+  <!-- Section 2 -->
+  <p style="font-weight:bold; color:#2f5d62;">
+    Apakah Anda siap di hubungi untuk informasi lebih lanjut
+  </p>
+
+  <label style="color:#2C6165;">
+    <input type="radio" name="kontak"> <b>Ya, saya bersedia</b>
+  </label><br><br>
+
+  <label style="color:#2C6165;">
+    <input type="radio" name="kontak"> <b>Tidak</b>
+  </label>
+
+  <br><br>
+
+  <!-- BUTTON LANJUT -->
+  <button onclick="validasiForm()"
+    style="background:#ff6b00; color:white; padding:12px 25px; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">
+    Berikutnya
+  </button>
+
+</div>
+
+<!-- FOOTER -->
+
+<!-- <div class="footer">
+© 2026 Docquity  
+</div> -->
+
+</div>
+<script>
+function validasiForm() {
+  const domisili = document.getElementById("domisili").value.trim();
+  const waktu = document.querySelector('input[name="waktu"]:checked');
+  const kontak = document.querySelector('input[name="kontak"]:checked');
+
+  if (domisili === "") {
+    alert("Domisili wajib diisi!");
+    return;
+  }
+
+  if (!waktu) {
+    alert("Silakan pilih kapan Anda siap!");
+    return;
+  }
+
+  if (!kontak) {
+    alert("Silakan pilih kesediaan untuk dihubungi!");
+    return;
+  }
+
+  // lanjut ke halaman berikut
+  window.location.href = "next-page.html";
+}
+</script>
+</body>
+</html>
