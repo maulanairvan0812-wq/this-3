@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+
 <script async src="https://cdn.ampproject.org/v0.js"></script>
 
 <!-- AMP Components -->
@@ -11,7 +12,6 @@
 src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
 
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-
 
 
 <style amp-custom>
@@ -112,30 +112,48 @@ action-xhr="https://example.com/rsvp"
 target="_top">
 <div style="max-width:600px; margin:auto; background:#f5f5f5; padding:20px; border-radius:15px;">
 
-  <!-- Nama -->
-  <p style="font-weight:bold; color:#2f5d62;">Nama Lengkap</p>
-  <input 
-    type="text" 
-    id="nama"
-    placeholder="Masukan nama anda"
-    style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd; margin-bottom:20px;"
-  >
+  <!-- Domisili -->
+  <p style="font-weight:bold; color:#2f5d62;">Domisili Anda saat ini:</p>
+  <input type="text" id="domisili" placeholder="Kota Anda"
+    style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd; margin-bottom:20px;">
 
-  <!-- WhatsApp -->
-  <p style="font-weight:bold; color:#2f5d62;">Nomor WhatsApp aktif</p>
-  <input 
-    type="tel" 
-    id="wa"
-    placeholder="Masukan No. WhatsApp"
-    style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd; margin-bottom:25px;"
-  >
+  <hr>
 
-  <!-- Button -->
- <a href="https://maulanairvan0812-wq.github.io/this-4/" 
-style="background:#ff6b00; color:white; padding:12px 25px; border-radius:8px; text-decoration:none; display:inline-block;">
-  Berikutnya
-</a>
+  <!-- Section 1 -->
+  <p style="font-weight:bold; color:#2f5d62;">
+    Kapan Anda siap untuk mengikuti program ini
+  </p>
 
+  <label style="color:#2C6165;">
+    <input type="radio" name="waktu"> <b>Dalam 3 bulan ke depan</b>
+  </label><br><br>
+
+  <label style="color:#2C6165;">
+    <input type="radio" name="waktu"> <b>Lebih dari 3 bulan</b>
+  </label>
+
+  <hr style="margin:20px 0;">
+
+  <!-- Section 2 -->
+  <p style="font-weight:bold; color:#2f5d62;">
+    Apakah Anda siap di hubungi untuk informasi lebih lanjut
+  </p>
+
+  <label style="color:#2C6165;">
+    <input type="radio" name="kontak"> <b>Ya, saya bersedia</b>
+  </label><br><br>
+
+  <label style="color:#2C6165;">
+    <input type="radio" name="kontak"> <b>Tidak</b>
+  </label>
+
+  <br><br>
+
+  <!-- BUTTON LANJUT -->
+  <button onclick="validasiForm()"
+    style="background:#ff6b00; color:white; padding:12px 25px; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">
+    Berikutnya
+  </button>
 
 </div>
 
@@ -147,31 +165,28 @@ style="background:#ff6b00; color:white; padding:12px 25px; border-radius:8px; te
 
 </div>
 <script>
-function kirimForm() {
-  const nama = document.getElementById("nama").value.trim();
-  const wa = document.getElementById("wa").value.trim();
+function validasiForm() {
+  const domisili = document.getElementById("domisili").value.trim();
+  const waktu = document.querySelector('input[name="waktu"]:checked');
+  const kontak = document.querySelector('input[name="kontak"]:checked');
 
-  if (nama === "") {
-    alert("Nama lengkap wajib diisi!");
+  if (domisili === "") {
+    alert("Domisili wajib diisi!");
     return;
   }
 
-  if (wa === "") {
-    alert("Nomor WhatsApp wajib diisi!");
+  if (!waktu) {
+    alert("Silakan pilih kapan Anda siap!");
     return;
   }
 
-  // validasi nomor sederhana (angka saja)
-  if (!/^[0-9]+$/.test(wa)) {
-    alert("Nomor WhatsApp harus berupa angka!");
+  if (!kontak) {
+    alert("Silakan pilih kesediaan untuk dihubungi!");
     return;
   }
 
-  // jika semua valid
-  alert("Data berhasil dikirim!");
-
-  //contoh redirect / kirim data
-  window.location.href = "";
+  // lanjut ke halaman berikut
+  window.location.href = "/this-4/index.html";
 }
 </script>
 </body>
