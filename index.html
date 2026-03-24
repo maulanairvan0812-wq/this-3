@@ -115,48 +115,30 @@ action-xhr="https://example.com/rsvp"
 target="_top">
 <div style="max-width:600px; margin:auto; background:#f5f5f5; padding:20px; border-radius:15px;">
 
-  <!-- Domisili -->
-  <p style="font-weight:bold; color:#2f5d62;">Domisili Anda saat ini:</p>
-  <input type="text" id="domisili" placeholder="Kota Anda"
-    style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd; margin-bottom:20px;">
+  <!-- Nama -->
+  <p style="font-weight:bold; color:#2f5d62;">Nama Lengkap</p>
+  <input 
+    type="text" 
+    id="nama"
+    placeholder="Masukan nama anda"
+    style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd; margin-bottom:20px;"
+  >
 
-  <hr>
+  <!-- WhatsApp -->
+  <p style="font-weight:bold; color:#2f5d62;">Nomor WhatsApp aktif</p>
+  <input 
+    type="tel" 
+    id="wa"
+    placeholder="Masukan No. WhatsApp"
+    style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd; margin-bottom:25px;"
+  >
 
-  <!-- Section 1 -->
-  <p style="font-weight:bold; color:#2f5d62;">
-    Kapan Anda siap untuk mengikuti program ini
-  </p>
-
-  <label style="color:#2C6165;">
-    <input type="radio" name="waktu"> <b>Dalam 3 bulan ke depan</b>
-  </label><br><br>
-
-  <label style="color:#2C6165;">
-    <input type="radio" name="waktu"> <b>Lebih dari 3 bulan</b>
-  </label>
-
-  <hr style="margin:20px 0;">
-
-  <!-- Section 2 -->
-  <p style="font-weight:bold; color:#2f5d62;">
-    Apakah Anda siap di hubungi untuk informasi lebih lanjut
-  </p>
-
-  <label style="color:#2C6165;">
-    <input type="radio" name="kontak"> <b>Ya, saya bersedia</b>
-  </label><br><br>
-
-  <label style="color:#2C6165;">
-    <input type="radio" name="kontak"> <b>Tidak</b>
-  </label>
-
-  <br><br>
-
-  <!-- BUTTON LANJUT -->
-  <button onclick="validasiForm()"
-    style="background:#ff6b00; color:white; padding:12px 25px; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">
-    Berikutnya
+  <!-- Button -->
+  <button onclick="kirimForm()" 
+    style="width:100%; background:#ff6b00; color:white; padding:14px; border:none; border-radius:10px; font-size:16px; font-weight:bold; cursor:pointer;">
+    Kirim & Daftar
   </button>
+
 
 </div>
 
@@ -168,27 +150,31 @@ target="_top">
 
 </div>
 <script>
-function validasiForm() {
-  const domisili = document.getElementById("domisili").value.trim();
-  const waktu = document.querySelector('input[name="waktu"]:checked');
-  const kontak = document.querySelector('input[name="kontak"]:checked');
+function kirimForm() {
+  const nama = document.getElementById("nama").value.trim();
+  const wa = document.getElementById("wa").value.trim();
 
-  if (domisili === "") {
-    alert("Domisili wajib diisi!");
+  if (nama === "") {
+    alert("Nama lengkap wajib diisi!");
     return;
   }
 
-  if (!waktu) {
-    alert("Silakan pilih kapan Anda siap!");
+  if (wa === "") {
+    alert("Nomor WhatsApp wajib diisi!");
     return;
   }
 
-  if (!kontak) {
-    alert("Silakan pilih kesediaan untuk dihubungi!");
+  // validasi nomor sederhana (angka saja)
+  if (!/^[0-9]+$/.test(wa)) {
+    alert("Nomor WhatsApp harus berupa angka!");
     return;
   }
 
-  
+  // jika semua valid
+  alert("Data berhasil dikirim!");
+
+  //contoh redirect / kirim data
+  window.location.href = "/this-4/index.html";
 }
 </script>
 </body>
